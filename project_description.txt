@@ -34,7 +34,7 @@ Klasser
         Namn, ålder, klubb, spelade matcher, gjorda mål
     Match
         Datum, resultat, arena, publikantal, hemmalag, tid
-    Main-metod
+    se.yrgo.up22.group1.Main-metod
         Läsa in data från fil
         Skall visa
             Matchrapporter
