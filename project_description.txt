@@ -10,6 +10,7 @@ Detta projekt är uppdelat i följande moduler:
     Lägg till/ta bort land
     Lägg till/ta bort spelare
     Lägg till/ta bort match
+    Lägg till/ta bort tränare
     Lista spelare efter land, eller annan spelardata.
     Nya matchdetaljer
     FIFA-ranking
@@ -28,13 +29,15 @@ Modulbeskrivning
 
 Klasser
 
-    Land
-        Namn, FIFA-ranking, Spelare
-    Spelare
+    Land (Magnus)
+        Namn, FIFA-ranking, Spelare, tränare
+    Spelare (Rayan)
         Namn, ålder, klubb, spelade matcher, gjorda mål
-    Match
+    Match (Eleni)
         Datum, resultat, arena, publikantal, hemmalag, tid
-    se.yrgo.up22.group1.Main-metod
+    Tränare (Alexander)
+        Namn, ålder, matcher tränade, vinster, förluster
+    Main (Magnus gör grunden)
         Läsa in data från fil
         Skall visa
             Matchrapporter
@@ -42,3 +45,5 @@ Klasser
                 t.ex lista spelare efter land, mål gjorda, etc.
             Lagrapporter
                 FIFA-rankningar – Land visas efter FIFA-rankningar.
+            Tränarrapporter
+                Matcher vunna, etc.
