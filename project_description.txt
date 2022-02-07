@@ -1,0 +1,44 @@
+Administrationssystem för internationell damfotboll
+
+Föreslaget är ett system med information för internationell damfotboll med länder, spelare, nya matcher och matchrapporter.
+Användare kan se matchdetaljer, lista spelare efter deras olika statistik. Användare kan också se olika underkategorier av rankningar som topp 3 länder efter FIFA-rankning, topp 10 målgörare, etc.
+
+Moduler
+
+Detta projekt är uppdelat i följande moduler:
+
+    Lägg till/ta bort land
+    Lägg till/ta bort spelare
+    Lägg till/ta bort match
+    Lista spelare efter land, eller annan spelardata.
+    Nya matchdetaljer
+    FIFA-ranking
+    Matchrapporter
+    Spelarrapporter
+    Visa spelardata
+
+Modulbeskrivning
+
+    Lägg till/ta bort land – Denna modul låter användaren lägga till ett nytt land i systemet eller ta bort ett land.
+    Lägg till/ta bort spelare – Lägga till eller ta bort spelare med denna modul.
+    Nya matchdetaljer – Alla nya matchdetaljer kan läggas till och ses via denna modul.
+    FIFA-rankningar – Land visas efter FIFA-rankningar.
+    Matchrapporter – Matchsammanfattningsrapporter kan genereras med hjälp av denna modul.
+    Spelarrapporter – All data relaterad till spelare som nr. namn, ålder, klubb, spelade matcher, gjorda mål mm.
+
+Klasser
+
+    Land
+        Namn, FIFA-ranking, Spelare
+    Spelare
+        Namn, ålder, klubb, spelade matcher, gjorda mål
+    Match
+        Datum, resultat, arena, publikantal, hemmalag, tid
+    Main-metod
+        Läsa in data från fil
+        Skall visa
+            Matchrapporter
+            Spelarrapporter
+                t.ex lista spelare efter land, mål gjorda, etc.
+            Lagrapporter
+                FIFA-rankningar – Land visas efter FIFA-rankningar.
