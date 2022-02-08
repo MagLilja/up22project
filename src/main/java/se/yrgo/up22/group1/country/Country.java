@@ -1,6 +1,7 @@
 package se.yrgo.up22.group1.country;
 
 import se.yrgo.up22.group1.coach.Coach;
+import se.yrgo.up22.group1.match.Match;
 import se.yrgo.up22.group1.player.Player;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class Country {
     private int FIFARanking;
     private double FIFARankingPoints;
     private List<Player> players;
+    private List<Match> matches;
     private Coach coach;
 
     public Country(String name) {
@@ -27,16 +29,16 @@ public class Country {
 
     public Country(String name, int FIFARanking, double FIFARankingPoints) {
         this(name);
-        addFIFARanking(FIFARanking);
-        addFIFARankingPoints(FIFARankingPoints);
+        setFIFARanking(FIFARanking);
+        setFIFARankingPoints(FIFARankingPoints);
         this.FIFARankingPoints = FIFARankingPoints;
     }
 
     public Country(String name, int FIFARanking, double FIFARankingPoints,
                    List<Player> players, Coach coach) {
         this(name, players, coach);
-        addFIFARanking(FIFARanking);
-        addFIFARankingPoints(FIFARankingPoints);
+        setFIFARanking(FIFARanking);
+        setFIFARankingPoints(FIFARankingPoints);
         this.FIFARankingPoints = FIFARankingPoints;
     }
 
@@ -57,12 +59,29 @@ public class Country {
         }
     }
 
+    // add one match
+    public void addMatches(Match match) {
+        if (this.matches == null) {
+            this.matches = new ArrayList<>();
+        }
+        matches.add(match);
+    }
+
+    // Overloading method for adding a list of matches
+    public void addMatches(List<Match> matches) {
+        if (this.matches == null) {
+            this.matches = matches;
+        } else {
+            this.matches.addAll(matches);
+        }
+    }
+
     private void addCoach(Coach coach) {
 
         this.coach = this.coach;
     }
 
-    private void addFIFARankingPoints(double FIFARankingPoints) {
+    public void setFIFARankingPoints(double FIFARankingPoints) {
         if (validateFIFARankingPoints(FIFARankingPoints)) {
             this.FIFARankingPoints = this.FIFARankingPoints;
         } else {
@@ -76,14 +95,13 @@ public class Country {
         if (FIFARankingPoints > 2109.09 || FIFARankingPoints <= 357) {
             return false;
         } else {
-
             return true;
         }
     }
 
-    private void addFIFARanking(int FIFARanking) {
+    public void setFIFARanking(int FIFARanking) {
         if (validateFIFARanking(FIFARanking)) {
-            this.FIFARanking = this.FIFARanking;
+            this.FIFARanking = FIFARanking;
         } else {
             throw new InputMismatchException("Not a valid FIFA Ranking");
         }

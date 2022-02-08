@@ -4,10 +4,16 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import se.yrgo.up22.group1.coach.Coach;
 import se.yrgo.up22.group1.player.Player;
 
+
+import javax.management.ConstructorParameters;
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -109,12 +115,25 @@ class CountryTest {
     @Test
     void getFIFARankingTest() {
         // given
-
         // when
         int expectedRanking = 1;
         int actualRanking = usa.getFIFARanking();
         // then
         assertEquals(expectedRanking, actualRanking);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {211, 0})
+    void validateThatsetFIFARankingThrowsInputMismatchExceptionTest(int ranking) {
+        assertThrows(InputMismatchException.class, () ->
+                usa.setFIFARanking(ranking));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {2110, 356})
+    void validateThatsetFIFARankingPointsThrowsInputMismatchExceptionTest(int rankingPoints) {
+        assertThrows(InputMismatchException.class, () ->
+                usa.setFIFARankingPoints(rankingPoints));
     }
 
     @Test
