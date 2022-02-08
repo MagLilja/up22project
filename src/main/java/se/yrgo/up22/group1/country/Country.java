@@ -40,7 +40,7 @@ public class Country {
         this.FIFARankingPoints = FIFARankingPoints;
     }
 
-
+    //TODO: validate amount of players
     public void addPlayer(Player player) {
         if (this.players == null) {
             this.players = new ArrayList<>();
@@ -99,7 +99,7 @@ public class Country {
     }
 
     public String getName() {
-                return name;
+        return name;
     }
 
     public int getFIFARanking() {
@@ -111,7 +111,7 @@ public class Country {
     }
 
     public List<Player> getPlayers() {
-        if (players == null){
+        if (players == null) {
             throw new NullPointerException("Country does not have any players yet");
         }
         return players;
@@ -121,7 +121,7 @@ public class Country {
         return coach;
     }
 
-    public void removeAllPlayersFromTeam(){
+    public void removeAllPlayersFromTeam() {
         players.clear();
     }
 }
