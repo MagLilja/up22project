@@ -1,6 +1,9 @@
 # Java stuff
 *.class
 
+# Maven
+/target
+
 # Intellij
 /.idea
 
