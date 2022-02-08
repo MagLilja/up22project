@@ -12,6 +12,9 @@ public class Match {
     private int nationalTeamBScore;
     private int publicNumber;
 
+    public Match() {
+    }
+
     public String getNationalTeamA() {
         return nationalTeamA;
     }

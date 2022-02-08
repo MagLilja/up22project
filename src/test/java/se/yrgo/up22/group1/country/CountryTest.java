@@ -1,6 +1,5 @@
 package se.yrgo.up22.group1.country;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,8 +9,6 @@ import se.yrgo.up22.group1.coach.Coach;
 import se.yrgo.up22.group1.player.Player;
 
 
-import javax.management.ConstructorParameters;
-import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -85,8 +82,6 @@ class CountryTest {
         int amountOfPlayers = sweden.getPlayers().size();
         // then
         assertEquals(expectedAmountOfPlayers, amountOfPlayers);
-
-
     }
 
     @Test
