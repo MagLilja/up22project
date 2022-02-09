@@ -1,4 +1,4 @@
-package se.yrgo.up22.group1.player;
+package se.yrgo.up22.group1.Player;
 
 public class Player {
     private String name;
@@ -31,7 +31,6 @@ public class Player {
     public int getGoalsScored() {
         return goalsScored;
     }
-
     public Player(String name, int age, String club, int gamesPlayed, int goalsScored) {
         this.name = name;
         this.age = age;

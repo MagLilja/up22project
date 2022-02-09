@@ -5,8 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import se.yrgo.up22.group1.Player.Player;
 import se.yrgo.up22.group1.coach.Coach;
-import se.yrgo.up22.group1.player.Player;
+
 
 
 import java.util.ArrayList;
