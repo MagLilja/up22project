@@ -1,4 +1,4 @@
-package se.yrgo.up22.group1.Player;
+package se.yrgo.up22.group1.player;
 
 public class Player {
     private String name;

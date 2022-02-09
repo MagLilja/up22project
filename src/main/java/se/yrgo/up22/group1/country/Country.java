@@ -1,8 +1,8 @@
 package se.yrgo.up22.group1.country;
 
-import se.yrgo.up22.group1.Player.Player;
 import se.yrgo.up22.group1.coach.Coach;
 import se.yrgo.up22.group1.match.Match;
+import se.yrgo.up22.group1.player.Player;
 
 
 import java.util.ArrayList;
