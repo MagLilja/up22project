@@ -1,8 +1,10 @@
 package se.yrgo.up22.group1.match;
 
+import se.yrgo.up22.group1.player.Player;
+
 import java.time.ZonedDateTime;
 import java.util.List;
-import se.yrgo.up22.group1.Player.Player;
+
 
 public class Match {
     private String nationalTeamA;
@@ -12,8 +14,8 @@ public class Match {
     private int nationalTeamAScore;
     private int nationalTeamBScore;
     private int publicNumber;
-    private List <Player> nationalTeamAPlayers;
-    private List <Player> nationalTeamBPlayers;
+    private List<Player> nationalTeamAPlayers;
+    private List<Player> nationalTeamBPlayers;
 
     public Match(String nationalTeamA, String nationalTeamB, String arena, ZonedDateTime matchDateAndTime, int nationalTeamAScore, int nationalTeamBScore, int publicNumber, List <Player> nationTeamAPlayers, List <Player> nationalTeamBPlayers){
         this.nationalTeamA = nationalTeamA;
