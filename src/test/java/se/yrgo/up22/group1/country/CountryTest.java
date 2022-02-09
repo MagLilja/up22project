@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import se.yrgo.up22.group1.coach.Coach;
+import se.yrgo.up22.group1.match.Match;
 import se.yrgo.up22.group1.player.Player;
 
 
@@ -19,25 +20,53 @@ import static org.junit.jupiter.api.Assertions.*;
 class CountryTest {
     Country sweden;
     Country usa;
+    Country ghana;
+
     Player caroline;
     Player lina;
     Player fridolina;
+
+    Match semiFinal;
+    Match finale;
+
     Coach peter;
+    List<Player> listOfPlayers = new ArrayList<>();
+    List<Match> listOfMatches = new ArrayList<>();
 
     @BeforeEach
     void beforeEach() {
-        sweden = new Country("Sweden");
+
         lina = new Player("Lina Hurtig");
         caroline = new Player("Caroline Seger");
         fridolina = new Player("Fridolina Rolfö");
+
+        listOfPlayers.add(caroline);
+        listOfPlayers.add(lina);
+        listOfPlayers.add(fridolina);
+
+        semiFinal = new Match();
+        finale = new Match();
+
+        listOfMatches.add(semiFinal);
+        listOfMatches.add(finale);
+
         peter = new Coach("Peter Gerhardsson");
+
+        sweden = new Country("Sweden");
         usa = new Country("USA", 1, 2109.09);
+    }
+    @Test
+    @DisplayName("Add FIFA rankings, a List of players and list of matches with constructor")
+    void AddFIFAListofPlayersListofMatchesWithConstructorTest() {
+        // given
+        ghana = new Country("Ghana", 5, 1734, listOfPlayers,listOfMatches,peter);
+        // when
+        assertNotNull(ghana);
     }
 
 
     @Test
     @DisplayName("Can add one player test to empty country team")
-        // Will also assert that getName() and Country(String name) is passed.
     void addOnePlayerToEmptyTeamTest() {
         // given
         Country sweden = new Country("Sweden");
@@ -50,9 +79,25 @@ class CountryTest {
     }
 
     @Test
+    @DisplayName("Can add one player to country with players test")
+        // Will also assert that getName() and Country(String name) is passed.
+    void addOnePlayerToTeamWithPlayersTest() {
+        // given
+        Country sweden = new Country("Sweden");
+        // when
+        int expectedAmountOfPlayers = 1;
+        sweden.addPlayer(fridolina);
+        sweden.addPlayer(lina);
+        int amountOfPlayers = sweden.getPlayers().size();
+        // then
+        assertEquals(expectedAmountOfPlayers, amountOfPlayers);
+    }
+
+    @Test
     @DisplayName("add list of players to empty team")
     void addListOfPlayersWithAddPlayerMethodToEmptyTeamTest() {
         // given
+        Country sweden = new Country("Sweden");
         Player fridolina = new Player("Fridolina Rolfö");
         Player lina = new Player("Lina Hurtig");
         List<Player> squad = new ArrayList<>();

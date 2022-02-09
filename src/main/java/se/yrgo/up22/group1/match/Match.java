@@ -17,6 +17,9 @@ public class Match {
     private List<Player> nationalTeamAPlayers;
     private List<Player> nationalTeamBPlayers;
 
+    public Match() {
+    }
+
     public Match(String nationalTeamA, String nationalTeamB, String arena, ZonedDateTime matchDateAndTime, int nationalTeamAScore, int nationalTeamBScore, int publicNumber, List <Player> nationTeamAPlayers, List <Player> nationalTeamBPlayers){
         this.nationalTeamA = nationalTeamA;
         this.nationalTeamB = nationalTeamB;

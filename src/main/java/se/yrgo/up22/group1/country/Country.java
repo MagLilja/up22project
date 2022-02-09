@@ -27,41 +27,53 @@ public class Country {
         addCoach(coach);
     }
 
+    public Country(String name, List<Player> players, List<Match> matches, Coach coach) {
+        this(name);
+        addPlayer(players);
+        addMatches(matches);
+        addCoach(coach);
+    }
+
 
     public Country(String name, int FIFARanking, double FIFARankingPoints) {
         this(name);
         setFIFARanking(FIFARanking);
         setFIFARankingPoints(FIFARankingPoints);
-        this.FIFARankingPoints = FIFARankingPoints;
     }
 
     public Country(String name, int FIFARanking, double FIFARankingPoints,
-                   List<Player> players, Coach coach) {
-        this(name, players, coach);
+                   List<Player> players, List<Match> matches,Coach coach) {
+        this(name, players, matches, coach);
         setFIFARanking(FIFARanking);
         setFIFARankingPoints(FIFARankingPoints);
-        this.FIFARankingPoints = FIFARankingPoints;
     }
 
-    //TODO: validate amount of players
+
     public void addPlayer(Player player) {
+        List<Player> tempPlayerList = new ArrayList<>();
+        tempPlayerList.add(player);
         if (this.players == null) {
             this.players = new ArrayList<>();
+            if (CountryValidators.validateMaxPlayers(this, tempPlayerList)) {
+                players.addAll(tempPlayerList);
+            }
         }
-        players.add(player);
     }
 
-    // Overloading method.
+    // Overloading method for adding a list of players
     public void addPlayer(List<Player> players) {
         if (this.players == null) {
-            this.players = players;
+            if (CountryValidators.validateMaxPlayers(this, players))
+                this.players = players;
         } else {
-            this.players.addAll(players);
+            if (CountryValidators.validateMaxPlayers(this, players)) {
+                this.players.addAll(players);
+            }
         }
     }
 
     // add one match
-    public void addMatches(Match match) {
+    public void addMatch(Match match) {
         if (this.matches == null) {
             this.matches = new ArrayList<>();
         }
@@ -83,37 +95,19 @@ public class Country {
     }
 
     public void setFIFARankingPoints(double FIFARankingPoints) {
-        if (validateFIFARankingPoints(FIFARankingPoints)) {
-            this.FIFARankingPoints = this.FIFARankingPoints;
+        if (CountryValidators.validateFIFARankingPoints(FIFARankingPoints)) {
+            this.FIFARankingPoints = FIFARankingPoints;
         } else {
             throw new InputMismatchException("Not a valid FIFA Ranking point");
         }
     }
 
-    // Bounds for points taken from FIFA official doc:
-    // https://digitalhub.fifa.com/m/f99da4f73212220/original/edbm045h0udbwkqew35a-pdf.pdf
-    private boolean validateFIFARankingPoints(double FIFARankingPoints) {
-        if (FIFARankingPoints > 2109.09 || FIFARankingPoints <= 357) {
-            return false;
-        } else {
-            return true;
-        }
-    }
 
     public void setFIFARanking(int FIFARanking) {
-        if (validateFIFARanking(FIFARanking)) {
+        if (CountryValidators.validateFIFARanking(FIFARanking)) {
             this.FIFARanking = FIFARanking;
         } else {
             throw new InputMismatchException("Not a valid FIFA Ranking");
-        }
-    }
-
-    // 210 teams
-    private boolean validateFIFARanking(int FIFARanking) {
-        if (FIFARanking > 210 || FIFARanking <= 0) {
-            return false;
-        } else {
-            return true;
         }
     }
 
@@ -130,9 +124,6 @@ public class Country {
     }
 
     public List<Player> getPlayers() {
-        if (players == null) {
-            throw new NullPointerException("Country does not have any players yet");
-        }
         return players;
     }
 
