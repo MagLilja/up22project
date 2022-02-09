@@ -1,4 +1,4 @@
-package se.yrgo.up22.group1.Player;
+package se.yrgo.up22.group1.player;
 
 public class Player {
     private String name;
@@ -6,6 +6,10 @@ public class Player {
     private String club;
     private int gamesPlayed;
     private int goalsScored;
+
+    public Player(String name) {
+        this.name = name;
+    }
 
     public String getName() {
         return name;
