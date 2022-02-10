@@ -5,10 +5,14 @@ import se.yrgo.up22.group1.player.Player;
 import java.time.ZonedDateTime;
 import java.util.List;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+
+import se.yrgo.up22.group1.Player.Player;
+import se.yrgo.up22.group1.country.Country;
 
 public class Match {
-    private String nationalTeamA;
-    private String nationalTeamB;
+    private Country nationalTeamA;
+    private Country nationalTeamB;
     private String arena;
     private ZonedDateTime matchDateAndTime;
     private int nationalTeamAScore;
@@ -17,29 +21,46 @@ public class Match {
     private List<Player> nationalTeamAPlayers;
     private List<Player> nationalTeamBPlayers;
 
-    public Match() {
-    }
-
-    public Match(String nationalTeamA, String nationalTeamB, String arena, ZonedDateTime matchDateAndTime, int nationalTeamAScore, int nationalTeamBScore, int publicNumber, List <Player> nationTeamAPlayers, List <Player> nationalTeamBPlayers){
+    public Match(Country nationalTeamA, Country nationalTeamB, String arena, ZonedDateTime matchDateAndTime,
+            int nationalTeamAScore, int nationalTeamBScore, int publicNumber, List<Player> nationTeamAPlayers,
+            List<Player> nationalTeamBPlayers) {
+        if (nationalTeamA == null) {
+            throw new RuntimeException("Invalid nationalTeamA");
+        }
         this.nationalTeamA = nationalTeamA;
+        if (nationalTeamB == null) {
+            throw new RuntimeException("Invalid nationalTeamB");
+        }
         this.nationalTeamB = nationalTeamB;
+        if (arena == null || arena.isBlank()) {
+            throw new RuntimeException("Invalid arena");
+        }
         this.arena = arena;
+        if (matchDateAndTime == null) {
+            throw new RuntimeException("Invalid matchDateAndTime");
+        }
         this.matchDateAndTime = matchDateAndTime;
+
         this.nationalTeamAScore = nationalTeamAScore;
         this.nationalTeamBScore = nationalTeamBScore;
+        
+        if (publicNumber < 0) {
+            throw new RuntimeException("Invalid publicNumber");
+        }
         this.publicNumber = publicNumber;
+
         this.nationalTeamAPlayers = nationTeamAPlayers;
-        this.nationalTeamBPlayers = nationalTeamBPlayers; 
+        this.nationalTeamBPlayers = nationalTeamBPlayers;
     }
 
-    public String getNationalTeamA() {
+    public Country getNationalTeamA() {
         return nationalTeamA;
     }
 
-    public String getNationalTeamB() {
+    public Country getNationalTeamB() {
         return nationalTeamB;
     }
-    
+
     public String getarena() {
         return arena;
     }
@@ -60,12 +81,11 @@ public class Match {
         return publicNumber;
     }
 
-    public List <Player> nationalTeamAplayers() {
+    public List<Player> nationalTeamAplayers() {
         return nationalTeamAPlayers;
     }
 
-    public List <Player> nationalTeamBplayers() {
+    public List<Player> nationalTeamBplayers() {
         return nationalTeamBPlayers;
     }
 }
-
