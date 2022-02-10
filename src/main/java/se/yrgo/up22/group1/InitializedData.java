@@ -5,6 +5,7 @@ import se.yrgo.up22.group1.country.Country;
 import se.yrgo.up22.group1.match.Match;
 import se.yrgo.up22.group1.player.Player;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -45,6 +46,11 @@ public class InitializedData {
 
     public InitializedData() {
         Collections.addAll(listOfCountries, sweden, usa, germany, france, netherlands, canada, brazil, england, spain, koreaDPR);
+        Collections.addAll(listOfMatches, new Match(canada, sweden, "Parc des Princes", ZonedDateTime.now(), 0, 1, 10000, Collections.emptyList(), Collections.emptyList()),
+        new Match(france, brazil, "Stade Océane", ZonedDateTime.now(), 2, 1, 12000, Collections.emptyList(), Collections.emptyList()), 
+        new Match(spain, usa, "Stade Auguste-Delaune", ZonedDateTime.now(),1, 2, 8800, Collections.emptyList(), Collections.emptyList()),
+        new Match());
+
     }
 
     public List<Country> getListOfCountries() {
