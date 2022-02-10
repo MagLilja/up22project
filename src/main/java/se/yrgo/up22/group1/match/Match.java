@@ -20,9 +20,12 @@ public class Match {
     private List<Player> nationalTeamAPlayers;
     private List<Player> nationalTeamBPlayers;
 
+    public Match() {
+    }
+
     public Match(Country nationalTeamA, Country nationalTeamB, String arena, ZonedDateTime matchDateAndTime,
-            int nationalTeamAScore, int nationalTeamBScore, int publicNumber, List<Player> nationTeamAPlayers,
-            List<Player> nationalTeamBPlayers) {
+                 int nationalTeamAScore, int nationalTeamBScore, int publicNumber, List<Player> nationTeamAPlayers,
+                 List<Player> nationalTeamBPlayers) {
         if (nationalTeamA == null) {
             throw new RuntimeException("Invalid nationalTeamA");
         }
@@ -46,6 +49,7 @@ public class Match {
         if (publicNumber < 0) {
             throw new RuntimeException("Invalid publicNumber");
         }
+
         this.publicNumber = publicNumber;
 
         this.nationalTeamAPlayers = nationTeamAPlayers;
