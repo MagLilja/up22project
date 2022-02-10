@@ -54,12 +54,14 @@ class CountryTest {
 
         sweden = new Country("Sweden");
         usa = new Country("USA", 1, 2109.09);
+
     }
+
     @Test
     @DisplayName("Add FIFA rankings, a List of players and list of matches with constructor")
     void AddFIFAListofPlayersListofMatchesWithConstructorTest() {
         // given
-        ghana = new Country("Ghana", 5, 1734, listOfPlayers,listOfMatches,peter);
+        ghana = new Country("Ghana", 5, 1734, listOfPlayers, listOfMatches, peter);
         // when
         assertNotNull(ghana);
     }
@@ -163,19 +165,6 @@ class CountryTest {
         assertEquals(expectedRanking, actualRanking);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {211, 0})
-    void validateThatsetFIFARankingThrowsInputMismatchExceptionTest(int ranking) {
-        assertThrows(InputMismatchException.class, () ->
-                usa.setFIFARanking(ranking));
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {2110, 356})
-    void validateThatsetFIFARankingPointsThrowsInputMismatchExceptionTest(int rankingPoints) {
-        assertThrows(InputMismatchException.class, () ->
-                usa.setFIFARankingPoints(rankingPoints));
-    }
 
     @Test
     void getFIFARankingPoints() {
@@ -198,9 +187,76 @@ class CountryTest {
     @Test
     void getCoach() {
         // given
+        Country KoreaDPR  = new Country("KoreaDPR", 5, 1734, listOfPlayers, listOfMatches, peter);
+
+        // then
+        assertNotNull(KoreaDPR.getCoach());
+    }
+
+    @Test
+    void addOneMatchToCountryWithNoMatchesTest() {
+        // given
+        Match match = new Match();
+        // when
+        usa.addMatch(match);
+        // then
+        assertNotNull(usa.getMatches());
+    }
+
+    @Test
+    void addOneMatchToCountryWithMatchesTest() {
+        // given
+        Match match = new Match();
+        // when
+        usa.addMatch(match);
+        usa.addMatch(match);
+        // then
+        assertEquals(2, usa.getMatches().size());
+        assertNotNull(usa.getMatches());
+    }
+
+    @Test
+    void addMatches() {
+        // given
 
         // when
 
         // then
+    }
+
+    @Test
+    void testEquals() {
+        // given
+        Country sweden = new Country("Sweden", 1, 1500);
+        Country sweden1 = new Country("Sweden", 2, 1500);
+        // then
+        assertTrue(sweden.equals(sweden1));
+    }
+
+    @Test
+    void compareTo() {
+        // given
+        Country sweden = new Country("Sweden", 1, 1500);
+        Country germany = new Country("Germany", 2, 1500);
+        // when
+        int less = sweden.compareTo(germany);
+        //then
+        assertEquals(-1, less); //Should Sweden be less than Germany.
+
+        // given
+        sweden = new Country("Sweden", 1, 1500);
+        germany = new Country("Germany", 1, 1500);
+        // when
+        int equal = sweden.compareTo(germany);
+        //then
+        assertEquals(0, equal); //Should Sweden be equal to Germany.
+
+        // given
+        sweden = new Country("Sweden", 2, 1500);
+        germany = new Country("Germany", 1, 1500);
+        // when
+        int bigger = sweden.compareTo(germany);
+        //then
+        assertEquals(1, bigger); //Should Sweden be bigger than Germany.
     }
 }

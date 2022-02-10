@@ -6,10 +6,18 @@ import se.yrgo.up22.group1.player.Player;
 
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Objects;
 
-public class Country {
+/**
+ * A class representing an international football team.
+ * A country has a name, FIFARanking, FIFARankingPoints, A list of players, a list of matches and a coach.
+ * @author Magnus Lilja
+ */
+public class Country implements Comparable<Country>{
+
     private String name;
     private int FIFARanking;
     private double FIFARankingPoints;
@@ -46,6 +54,7 @@ public class Country {
         this(name, players, matches, coach);
         setFIFARanking(FIFARanking);
         setFIFARankingPoints(FIFARankingPoints);
+
     }
 
 
@@ -61,7 +70,7 @@ public class Country {
     }
 
     // Overloading method for adding a list of players
-    public void addPlayer(List<Player> players) {
+    public boolean addPlayer(List<Player> players) {
         if (this.players == null) {
             if (CountryValidators.validateMaxPlayers(this, players))
                 this.players = players;
@@ -69,6 +78,15 @@ public class Country {
             if (CountryValidators.validateMaxPlayers(this, players)) {
                 this.players.addAll(players);
             }
+        }
+        return true;
+    }
+
+    public void addCoach(Coach coach){
+        if (this.coach == null){
+            this.coach = coach;
+        } else {
+            throw new IllegalStateException("Only one coach per team allowed! Remove Coach first!");
         }
     }
 
@@ -89,10 +107,6 @@ public class Country {
         }
     }
 
-    private void addCoach(Coach coach) {
-
-        this.coach = this.coach;
-    }
 
     public void setFIFARankingPoints(double FIFARankingPoints) {
         if (CountryValidators.validateFIFARankingPoints(FIFARankingPoints)) {
@@ -127,6 +141,10 @@ public class Country {
         return players;
     }
 
+    public List<Match> getMatches() {
+        return matches;
+    }
+
     public Coach getCoach() {
         return coach;
     }
@@ -134,4 +152,39 @@ public class Country {
     public void removeAllPlayersFromTeam() {
         players.clear();
     }
+
+    public void removeAllMatchesFromTeam() {
+        players.clear();
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "name='" + name + '\'' +
+                ", FIFARanking=" + FIFARanking +
+                ", FIFARankingPoints=" + FIFARankingPoints +
+                ", players=" + players +
+                ", matches=" + matches +
+                ", coach=" + coach +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Country country = (Country) o;
+        return Objects.equals(name, country.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
+    @Override
+    public int compareTo(Country o) {
+        Comparator comparator = Comparator.comparingInt(Country::getFIFARanking);
+       return comparator.compare(this, o);
+   }
 }

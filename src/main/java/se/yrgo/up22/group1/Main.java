@@ -1,6 +1,10 @@
 package se.yrgo.up22.group1;
 
 
+import se.yrgo.up22.group1.country.Country;
+
+import java.util.Comparator;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -18,8 +22,10 @@ public class Main {
 
          */
 
+
+
         initializedData.getListOfCountries().stream()
-//                .sorted()
+                .sorted()
                 .forEach(System.out::println);
 
     }

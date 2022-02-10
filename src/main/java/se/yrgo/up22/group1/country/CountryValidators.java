@@ -27,9 +27,16 @@ public class CountryValidators {
 
     // max 24 players in a team
     public static boolean validateMaxPlayers(Country country, List<Player> tempPlayerList) {
-        if ((country.getPlayers() != null ? country.getPlayers().size() : 0) + tempPlayerList.size() > 24) {
-            throw new IllegalStateException("Too many players in the team. Got: " + country.getPlayers().size() + "Trying to add: " + tempPlayerList.size());
+        int currentTeamSize;
+        if (country.getPlayers() != null) {
+            currentTeamSize = country.getPlayers().size();
+        } else {
+            currentTeamSize = 0;
         }
+        if (currentTeamSize + tempPlayerList.size() > 24 || tempPlayerList.size() > 24) {
+            throw new IllegalStateException("Too many players in the team. Got: " + currentTeamSize + " Trying to add: " + tempPlayerList.size());
+        }
+
         return true;
     }
 }
