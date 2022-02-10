@@ -1,14 +1,13 @@
 package se.yrgo.up22.group1.match;
 
 import se.yrgo.up22.group1.player.Player;
+import se.yrgo.up22.group1.country.Country;
 
 import java.time.ZonedDateTime;
 import java.util.List;
 
 import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
-import se.yrgo.up22.group1.Player.Player;
-import se.yrgo.up22.group1.country.Country;
 
 public class Match {
     private Country nationalTeamA;
