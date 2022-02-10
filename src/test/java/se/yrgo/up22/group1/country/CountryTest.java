@@ -44,12 +44,6 @@ class CountryTest {
         listOfPlayers.add(lina);
         listOfPlayers.add(fridolina);
 
-        semiFinal = new Match();
-        finale = new Match();
-
-        listOfMatches.add(semiFinal);
-        listOfMatches.add(finale);
-
         peter = new Coach("Peter Gerhardsson");
 
         sweden = new Country("Sweden");
@@ -58,10 +52,10 @@ class CountryTest {
     }
 
     @Test
-    @DisplayName("Add FIFA rankings, a List of players and list of matches with constructor")
-    void AddFIFAListofPlayersListofMatchesWithConstructorTest() {
+    @DisplayName("Add FIFA rankings, a List of players with constructor")
+    void AddFIFAListofPlayersWithConstructorTest() {
         // given
-        ghana = new Country("Ghana", 5, 1734, listOfPlayers, listOfMatches, peter);
+        ghana = new Country("Ghana", 5, 1734, listOfPlayers, peter);
         // when
         assertNotNull(ghana);
     }
@@ -187,42 +181,13 @@ class CountryTest {
     @Test
     void getCoach() {
         // given
-        Country KoreaDPR  = new Country("KoreaDPR", 5, 1734, listOfPlayers, listOfMatches, peter);
+        Country KoreaDPR = new Country("KoreaDPR", 5, 1734, listOfPlayers, peter);
 
         // then
         assertNotNull(KoreaDPR.getCoach());
     }
 
-    @Test
-    void addOneMatchToCountryWithNoMatchesTest() {
-        // given
-        Match match = new Match();
-        // when
-        usa.addMatch(match);
-        // then
-        assertNotNull(usa.getMatches());
-    }
 
-    @Test
-    void addOneMatchToCountryWithMatchesTest() {
-        // given
-        Match match = new Match();
-        // when
-        usa.addMatch(match);
-        usa.addMatch(match);
-        // then
-        assertEquals(2, usa.getMatches().size());
-        assertNotNull(usa.getMatches());
-    }
-
-    @Test
-    void addMatches() {
-        // given
-
-        // when
-
-        // then
-    }
 
     @Test
     void testEquals() {

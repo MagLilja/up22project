@@ -22,23 +22,16 @@ public class Country implements Comparable<Country>{
     private int FIFARanking;
     private double FIFARankingPoints;
     private List<Player> players;
-    private List<Match> matches;
     private Coach coach;
 
     public Country(String name) {
         this.name = name;
     }
 
+
     public Country(String name, List<Player> players, Coach coach) {
         this(name);
         addPlayer(players);
-        addCoach(coach);
-    }
-
-    public Country(String name, List<Player> players, List<Match> matches, Coach coach) {
-        this(name);
-        addPlayer(players);
-        addMatches(matches);
         addCoach(coach);
     }
 
@@ -50,8 +43,8 @@ public class Country implements Comparable<Country>{
     }
 
     public Country(String name, int FIFARanking, double FIFARankingPoints,
-                   List<Player> players, List<Match> matches,Coach coach) {
-        this(name, players, matches, coach);
+                   List<Player> players, Coach coach) {
+        this(name, players, coach);
         setFIFARanking(FIFARanking);
         setFIFARankingPoints(FIFARankingPoints);
 
@@ -90,22 +83,6 @@ public class Country implements Comparable<Country>{
         }
     }
 
-    // add one match
-    public void addMatch(Match match) {
-        if (this.matches == null) {
-            this.matches = new ArrayList<>();
-        }
-        matches.add(match);
-    }
-
-    // Overloading method for adding a list of matches
-    public void addMatches(List<Match> matches) {
-        if (this.matches == null) {
-            this.matches = matches;
-        } else {
-            this.matches.addAll(matches);
-        }
-    }
 
 
     public void setFIFARankingPoints(double FIFARankingPoints) {
@@ -141,10 +118,6 @@ public class Country implements Comparable<Country>{
         return players;
     }
 
-    public List<Match> getMatches() {
-        return matches;
-    }
-
     public Coach getCoach() {
         return coach;
     }
@@ -153,9 +126,6 @@ public class Country implements Comparable<Country>{
         players.clear();
     }
 
-    public void removeAllMatchesFromTeam() {
-        players.clear();
-    }
 
     @Override
     public String toString() {
@@ -164,7 +134,6 @@ public class Country implements Comparable<Country>{
                 ", FIFARanking=" + FIFARanking +
                 ", FIFARankingPoints=" + FIFARankingPoints +
                 ", players=" + players +
-                ", matches=" + matches +
                 ", coach=" + coach +
                 '}';
     }
