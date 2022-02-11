@@ -40,16 +40,18 @@ public class Match {
             throw new RuntimeException("Invalid matchDateAndTime");
         }
         this.matchDateAndTime = matchDateAndTime;
-        if (matchDateAndTime == null) {
+        if (nationalTeamAScore < 0) {
             throw new RuntimeException("Invalid matchDateAndTime");
         }
         this.nationalTeamAScore = nationalTeamAScore;
+        if (nationalTeamBScore < 0) {
+            throw new RuntimeException("Invalid matchDateAndTime");
+        }
         this.nationalTeamBScore = nationalTeamBScore;
         
         if (publicNumber < 0) {
             throw new RuntimeException("Invalid publicNumber");
         }
-
         this.publicNumber = publicNumber;
 
         this.nationalTeamAPlayers = nationTeamAPlayers;
