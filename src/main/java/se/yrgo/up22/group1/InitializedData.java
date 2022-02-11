@@ -28,7 +28,7 @@ public class InitializedData {
     // Initialize 10 countries
     // Initialize a List<> of countries
 
-    List<Player> listOfPlayers = new ArrayList<>();
+    List<Player> listOfPlayers = List.of(new Player("Spelare"), new Player("En spelare till"));
     List<Match> listOfMatches = new ArrayList<>();
     Coach coach = new Coach("peter");
     Country usa = new Country("USA", 1, 2109.09, listOfPlayers, coach);
@@ -47,6 +47,7 @@ public class InitializedData {
     public InitializedData() {
         Collections.addAll(listOfCountries, sweden, usa, germany, france, netherlands, canada, brazil, england, spain,
                 koreaDPR);
+
         Collections.addAll(listOfMatches,
                 new Match(canada, sweden, "Parc des Princes", ZonedDateTime.now(), 0, 1, 10000, Collections.emptyList(),
                         Collections.emptyList()),
@@ -71,6 +72,10 @@ public class InitializedData {
                 new Match(netherlands, koreaDPR, "Stade de Nice", ZonedDateTime.now(), 3, 1, 90212,
                         Collections.emptyList(), Collections.emptyList()));
 
+    }
+
+    public List<Match> getListOfMatches() {
+        return listOfMatches;
     }
 
     public List<Country> getListOfCountries() {

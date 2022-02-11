@@ -14,9 +14,10 @@ import java.util.Objects;
 /**
  * A class representing an international football team.
  * A country has a name, FIFARanking, FIFARankingPoints, A list of players, a list of matches and a coach.
+ *
  * @author Magnus Lilja
  */
-public class Country implements Comparable<Country>{
+public class Country implements Comparable<Country> {
 
     private String name;
     private int FIFARanking;
@@ -26,6 +27,7 @@ public class Country implements Comparable<Country>{
 
     public Country(String name) {
         this.name = name;
+
     }
 
 
@@ -75,14 +77,13 @@ public class Country implements Comparable<Country>{
         return true;
     }
 
-    public void addCoach(Coach coach){
-        if (this.coach == null){
+    public void addCoach(Coach coach) {
+        if (this.coach == null) {
             this.coach = coach;
         } else {
             throw new IllegalStateException("Only one coach per team allowed! Remove Coach first!");
         }
     }
-
 
 
     public void setFIFARankingPoints(double FIFARankingPoints) {
@@ -129,11 +130,9 @@ public class Country implements Comparable<Country>{
 
     @Override
     public String toString() {
-        return "Country{" +
-                "name='" + name + '\'' +
-                ", FIFARanking=" + FIFARanking +
-                ", FIFARankingPoints=" + FIFARankingPoints +
-                ", players=" + players +
+        return name +
+                ", FIFARanking = " + FIFARanking +
+                ", FIFARankingPoints = " + FIFARankingPoints +
                 ", coach=" + coach +
                 '}';
     }
@@ -154,6 +153,6 @@ public class Country implements Comparable<Country>{
     @Override
     public int compareTo(Country o) {
         Comparator comparator = Comparator.comparingInt(Country::getFIFARanking);
-       return comparator.compare(this, o);
-   }
+        return comparator.compare(this, o);
+    }
 }
