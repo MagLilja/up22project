@@ -1,9 +1,6 @@
 package se.yrgo.up22.group1;
 
-
-import se.yrgo.up22.group1.country.Country;
-
-import java.util.Comparator;
+import java.util.Scanner;
 
 public class Main {
 
@@ -21,12 +18,22 @@ public class Main {
 
 
          */
+        
 
+        getMenuChoice();
 
 
         initializedData.getListOfCountries().stream()
                 .sorted()
                 .forEach(System.out::println);
 
+    }
+
+    private static int getMenuChoice() {
+        try (Scanner scanner = new Scanner(System.in)){
+            int result = scanner.nextInt();
+            scanner.nextLine();
+            return result;
+        }
     }
 }
