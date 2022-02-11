@@ -64,6 +64,7 @@ public class Main {
                 case 4:
                     break;
                 case 5:
+                    System.out.println("Programmet avslutat!");
                     System.exit(0);
                     return;
 
@@ -78,7 +79,7 @@ public class Main {
             int menuChoiceNext = getMenuChoice(scanner);
             if (menuChoiceNext == 0) {
                 menuStart(initializedData, scanner, mainMenu);
-                return;
+
             } else if (menuChoiceNext <= initializedData.getListOfCountries().size()) {
                 System.out.println(initializedData.getListOfCountries().get(menuChoiceNext).getPlayers());
             } else {
@@ -107,10 +108,17 @@ public class Main {
     }
 
     private static int getMenuChoice(Scanner scanner) {
+        int resultInt = 999;
+        while (resultInt == 999) {
+            String resultString = scanner.nextLine();
+            if (resultString.matches("[0-10]+")) {
+                resultInt = Integer.parseInt(resultString);
+            } else {
+                System.out.println("Ej giltigt input, försök igen!");
+            }
+        }
 
-        int result = scanner.nextInt();
-//            scanner.nextLine();
-        return result;
+        return resultInt;
 
     }
 }
