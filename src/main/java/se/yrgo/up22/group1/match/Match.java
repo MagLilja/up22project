@@ -6,8 +6,6 @@ import se.yrgo.up22.group1.country.Country;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
-
 
 public class Match {
     private Country nationalTeamA;
@@ -42,7 +40,9 @@ public class Match {
             throw new RuntimeException("Invalid matchDateAndTime");
         }
         this.matchDateAndTime = matchDateAndTime;
-
+        if (matchDateAndTime == null) {
+            throw new RuntimeException("Invalid matchDateAndTime");
+        }
         this.nationalTeamAScore = nationalTeamAScore;
         this.nationalTeamBScore = nationalTeamBScore;
         

@@ -32,7 +32,7 @@ public class InitializedData {
     List<Match> listOfMatches = new ArrayList<>();
     Coach coach = new Coach("peter");
     Country usa = new Country("USA", 1, 2109.09, listOfPlayers, coach);
-    Country sweden = new Country("Sweden", 2, 2079, listOfPlayers,  coach);
+    Country sweden = new Country("Sweden", 2, 2079, listOfPlayers, coach);
     Country germany = new Country("Germany", 3, 2070, listOfPlayers, coach);
     Country france = new Country("France", 4, 2034, listOfPlayers, coach);
     Country netherlands = new Country("Netherlands", 5, 2021, listOfPlayers, coach);
@@ -45,11 +45,31 @@ public class InitializedData {
     List<Country> listOfCountries = new ArrayList<>();
 
     public InitializedData() {
-        Collections.addAll(listOfCountries, sweden, usa, germany, france, netherlands, canada, brazil, england, spain, koreaDPR);
-        Collections.addAll(listOfMatches, new Match(canada, sweden, "Parc des Princes", ZonedDateTime.now(), 0, 1, 10000, Collections.emptyList(), Collections.emptyList()),
-        new Match(france, brazil, "Stade Océane", ZonedDateTime.now(), 2, 1, 12000, Collections.emptyList(), Collections.emptyList()), 
-        new Match(spain, usa, "Stade Auguste-Delaune", ZonedDateTime.now(),1, 2, 8800, Collections.emptyList(), Collections.emptyList()),
-        new Match());
+        Collections.addAll(listOfCountries, sweden, usa, germany, france, netherlands, canada, brazil, england, spain,
+                koreaDPR);
+        Collections.addAll(listOfMatches,
+                new Match(canada, sweden, "Parc des Princes", ZonedDateTime.now(), 0, 1, 10000, Collections.emptyList(),
+                        Collections.emptyList()),
+                new Match(france, brazil, "Stade Océane", ZonedDateTime.now(), 2, 1, 12000, Collections.emptyList(),
+                        Collections.emptyList()),
+                new Match(spain, usa, "Stade Auguste-Delaune", ZonedDateTime.now(), 1, 2, 8800, Collections.emptyList(),
+                        Collections.emptyList()),
+                new Match(england, sweden, "Stade de Nice", ZonedDateTime.now(), 1, 2, 11280, Collections.emptyList(),
+                        Collections.emptyList()),
+                new Match(germany, netherlands, "Roazhon Park", ZonedDateTime.now(), 2, 3, 12990,
+                        Collections.emptyList(), Collections.emptyList()),
+                new Match(canada, koreaDPR, "Stade de Lyon", ZonedDateTime.now(), 0, 1, 7400, Collections.emptyList(),
+                        Collections.emptyList()),
+                new Match(france, usa, "Stade de Lyon", ZonedDateTime.now(), 1, 3, 12118, Collections.emptyList(),
+                        Collections.emptyList()),
+                new Match(brazil, spain, "Stade Auguste-Delaune", ZonedDateTime.now(), 0, 1, 12699,
+                        Collections.emptyList(), Collections.emptyList()),
+                new Match(sweden, germany, "Roazhon Park", ZonedDateTime.now(), 2, 1, 13000, Collections.emptyList(),
+                        Collections.emptyList()),
+                new Match(england, canada, "Stade Océane", ZonedDateTime.now(), 2, 2, 10358, Collections.emptyList(),
+                        Collections.emptyList()),
+                new Match(netherlands, koreaDPR, "Stade de Nice", ZonedDateTime.now(), 3, 1, 90212,
+                        Collections.emptyList(), Collections.emptyList()));
 
     }
 
