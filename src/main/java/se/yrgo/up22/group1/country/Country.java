@@ -145,8 +145,7 @@ public class Country implements Comparable<Country> {
         return name +
                 ", FIFARanking = " + FIFARanking +
                 ", FIFARankingPoints = " + FIFARankingPoints +
-                ", coach=" + coach +
-                '}';
+                ", coach =" + coach;
     }
 
     @Override

@@ -7,6 +7,17 @@ public class Player {
     private int gamesPlayed;
     private int goalsScored;
 
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", club='" + club + '\'' +
+                ", gamesPlayed=" + gamesPlayed +
+                ", goalsScored=" + goalsScored +
+                '}';
+    }
+
     public Player(String name) {
         this.name = name;
     }

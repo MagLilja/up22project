@@ -23,10 +23,7 @@ public class Main {
         if (Files.notExists(mainMenu)) {
             System.err.println("The file " + mainMenu + " does not exist!");
         }
-        CountryMenu.oneCountryMenu = Path.of("CountryMenu.txt");
-        if (Files.notExists(CountryMenu.oneCountryMenu)) {
-            System.err.println("The file " + CountryMenu.oneCountryMenu + " does not exist!");
-        }
+
         menuStart(scanner);
 
     }
