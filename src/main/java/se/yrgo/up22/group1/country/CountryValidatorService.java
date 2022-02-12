@@ -3,26 +3,20 @@ package se.yrgo.up22.group1.country;
 import se.yrgo.up22.group1.player.Player;
 
 import java.util.List;
+import java.util.Optional;
 
-public class CountryValidators {
+public class CountryValidatorService {
 
     // Bounds for points taken from FIFA official doc:
     // https://digitalhub.fifa.com/m/f99da4f73212220/original/edbm045h0udbwkqew35a-pdf.pdf
     public static boolean validateFIFARankingPoints(double FIFARankingPoints) {
-        if (FIFARankingPoints > 2109.09 || FIFARankingPoints <= 357) {
-            return false;
-        } else {
-            return true;
-        }
+        return (FIFARankingPoints <= 2109.09 && FIFARankingPoints > 357);
     }
+
 
     // 210 teams
     public static boolean validateFIFARanking(int FIFARanking) {
-        if (FIFARanking > 210 || FIFARanking <= 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return (FIFARanking <= 210 && FIFARanking > 0);
     }
 
     // max 24 players in a team
@@ -33,10 +27,6 @@ public class CountryValidators {
         } else {
             currentTeamSize = 0;
         }
-        if (currentTeamSize + tempPlayerList.size() > 24 || tempPlayerList.size() > 24) {
-            throw new IllegalStateException("Too many players in the team. Got: " + currentTeamSize + " Trying to add: " + tempPlayerList.size());
-        }
-
-        return true;
+        return (currentTeamSize + tempPlayerList.size() <= 24);
     }
 }
