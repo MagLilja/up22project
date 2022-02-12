@@ -26,12 +26,8 @@ class CountryTest {
     Player lina;
     Player fridolina;
 
-    Match semiFinal;
-    Match finale;
-
     Coach peter;
     List<Player> listOfPlayers = new ArrayList<>();
-    List<Match> listOfMatches = new ArrayList<>();
 
     @BeforeEach
     void beforeEach() {
@@ -159,23 +155,31 @@ class CountryTest {
         assertEquals(expectedRanking, actualRanking);
     }
 
-
     @Test
-    void getFIFARankingPoints() {
+    void addPlayerToEmptyTeamShouldThrowExceptionWhenInputIsntValidTest() {
         // given
-
+        List<Player> listOf26Players = new ArrayList<>();
+        for (int i = 1; i <= 26; i++) {
+            listOf26Players.add(new Player("Magnus"));
+        }
         // when
-
+        sweden.removeAllPlayersFromTeam();
         // then
+        assertThrows(IllegalStateException.class, () -> sweden.addPlayer(listOf26Players));
     }
 
     @Test
-    void getPlayers() {
+    void addPlayerToNonEmptyTeamShouldThrowExceptionWhenInputIsntValidTest() {
         // given
-
+        List<Player> listOf26Players = new ArrayList<>();
+        for (int i = 1; i <= 26; i++) {
+            listOf26Players.add(new Player("Magnus"));
+        }
         // when
-
+        sweden.addPlayer(new Player("Magnus"));
         // then
+        assertThrows(IllegalStateException.class, () -> sweden.addPlayer(listOf26Players));
+
     }
 
     @Test
@@ -186,7 +190,6 @@ class CountryTest {
         // then
         assertNotNull(KoreaDPR.getCoach());
     }
-
 
 
     @Test
@@ -223,5 +226,15 @@ class CountryTest {
         int bigger = sweden.compareTo(germany);
         //then
         assertEquals(1, bigger); //Should Sweden be bigger than Germany.
+    }
+
+    @Test
+    void removeAllPlayersFromTeam() {
+        // given
+
+        // when
+        sweden.removeAllPlayersFromTeam();
+        assertNull(sweden.getPlayers());
+        // then
     }
 }

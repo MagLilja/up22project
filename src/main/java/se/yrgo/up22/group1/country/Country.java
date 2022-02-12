@@ -1,7 +1,6 @@
 package se.yrgo.up22.group1.country;
 
 import se.yrgo.up22.group1.coach.Coach;
-import se.yrgo.up22.group1.match.Match;
 import se.yrgo.up22.group1.player.Player;
 
 
@@ -10,6 +9,7 @@ import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * A class representing an international football team.
@@ -58,7 +58,7 @@ public class Country implements Comparable<Country> {
         tempPlayerList.add(player);
         if (this.players == null) {
             this.players = new ArrayList<>();
-            if (CountryValidators.validateMaxPlayers(this, tempPlayerList)) {
+            if (CountryValidatorService.validateMaxPlayers(this, tempPlayerList)) {
                 players.addAll(tempPlayerList);
             }
         }
@@ -67,11 +67,16 @@ public class Country implements Comparable<Country> {
     // Overloading method for adding a list of players
     public boolean addPlayer(List<Player> players) {
         if (this.players == null) {
-            if (CountryValidators.validateMaxPlayers(this, players))
+            if (CountryValidatorService.validateMaxPlayers(this, players)) {
                 this.players = players;
+            } else {
+                throw new IllegalStateException("Too many players in the team. Trying to add: " + players.size());
+            }
         } else {
-            if (CountryValidators.validateMaxPlayers(this, players)) {
+            if (CountryValidatorService.validateMaxPlayers(this, players)) {
                 this.players.addAll(players);
+            }else {
+                throw new IllegalStateException("Too many players in the team. Got: 0 " + getPlayers().size() + " Trying to add: " + players.size());
             }
         }
         return true;
@@ -87,7 +92,7 @@ public class Country implements Comparable<Country> {
 
 
     public void setFIFARankingPoints(double FIFARankingPoints) {
-        if (CountryValidators.validateFIFARankingPoints(FIFARankingPoints)) {
+        if (CountryValidatorService.validateFIFARankingPoints(FIFARankingPoints)) {
             this.FIFARankingPoints = FIFARankingPoints;
         } else {
             throw new InputMismatchException("Not a valid FIFA Ranking point");
@@ -96,7 +101,7 @@ public class Country implements Comparable<Country> {
 
 
     public void setFIFARanking(int FIFARanking) {
-        if (CountryValidators.validateFIFARanking(FIFARanking)) {
+        if (CountryValidatorService.validateFIFARanking(FIFARanking)) {
             this.FIFARanking = FIFARanking;
         } else {
             throw new InputMismatchException("Not a valid FIFA Ranking");
@@ -123,8 +128,15 @@ public class Country implements Comparable<Country> {
         return coach;
     }
 
-    public void removeAllPlayersFromTeam() {
-        players.clear();
+    public boolean removeAllPlayersFromTeam() {
+        if (players != null){
+            players.clear();
+            return true;
+        }
+        return false;
+
+
+
     }
 
 
