@@ -93,4 +93,19 @@ public class Match {
     public List<Player> nationalTeamBplayers() {
         return nationalTeamBPlayers;
     }
+
+    @Override
+    public String toString() {
+        return "Match{" +
+                "nationalTeamA=" + nationalTeamA +
+                ", nationalTeamB=" + nationalTeamB +
+                ", arena='" + arena + '\'' +
+                ", matchDateAndTime=" + matchDateAndTime +
+                ", nationalTeamAScore=" + nationalTeamAScore +
+                ", nationalTeamBScore=" + nationalTeamBScore +
+                ", publicNumber=" + publicNumber +
+                ", nationalTeamAPlayers=" + nationalTeamAPlayers +
+                ", nationalTeamBPlayers=" + nationalTeamBPlayers +
+                '}';
+    }
 }
