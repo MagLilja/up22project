@@ -6,7 +6,7 @@ Included a console menu interface to interact with the application.
 
 ## How to Clone and Build
 
-###Eclipse
+##Eclipse
 
 Open the Git Repositories view (Window > Show View > Other... > Git > Git Repositories).
 
@@ -47,4 +47,4 @@ Then execute the JAR-file in your terminal with the following command:
 
 (target directory format can be different depending on terminal shell)
 
-###Hope this helps!
+#Hope this helps!
