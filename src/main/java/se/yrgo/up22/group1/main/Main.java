@@ -49,7 +49,7 @@ public class Main {
                 case 2:
                     System.out.println("############## Alla spelare ##############");
                     InitializedData.getListOfPlayers().stream()
-                            .sorted(Comparator.comparingInt(Player::getGamesPlayed))
+                            .sorted(Comparator.comparingInt(Player::getPlayedMatches))
                             .forEach(System.out::println);
                     break;
                 case 3:

@@ -43,10 +43,10 @@ public class PlayerTest {
         assertEquals(expClub, clubResult);
         /// Games Played
         int expGamesPlayed = 164;
-        testPlayerOne.setGamesPlayed(164);
-        testPlayerOne.getGamesPlayed();
-        int gamesPlayedResult = testPlayerOne.getGamesPlayed();
-        assertEquals(expGamesPlayed, gamesPlayedResult);
+        testPlayerOne.setPlayedMatches(164);
+        testPlayerOne.getPlayedMatches();
+        int playedMatchesResult = testPlayerOne.getPlayedMatches();
+        assertEquals(expGamesPlayed, playedMatchesResult);
         /// Goals Scored  GoalsScored
         int expGoalsScored = 49;
         testPlayerOne.setGoalsScored(49);
@@ -81,9 +81,9 @@ public class PlayerTest {
         assertEquals(expClub, clubResult);
         ///Games Played
         int expGamesPlayed = 211;
-        testPlayerTwo.setGamesPlayed(211);
-        testPlayerTwo.getGamesPlayed();
-        int gamesPlayedResult = testPlayerTwo.getGamesPlayed();
+        testPlayerTwo.setPlayedMatches(211);
+        testPlayerTwo.getPlayedMatches();
+        int gamesPlayedResult = testPlayerTwo.getPlayedMatches();
         assertEquals(expGamesPlayed, gamesPlayedResult);
         /// Goals Scored
         int expGoalsScored = 26;

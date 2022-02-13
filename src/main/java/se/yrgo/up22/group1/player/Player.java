@@ -1,13 +1,18 @@
 package se.yrgo.up22.group1.player;
 
 
+/**
+ * This class is for players of the international football team
+ * In this class there is name, age, club, matches played, goals scored
+ *
+ * @author Rayan Sabah Mahmod
+ */
 
-//Rayan Sabah Mahmod
 public class Player {
     private String name;
     private int age;
     private String club;
-    private int gamesPlayed;
+    private int playedMatches;
     private int goalsScored;
 
     public Player() {
@@ -17,25 +22,36 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+        if (name == ""){
+            throw new IllegalArgumentException("Invalid name, try again ");
+        }
     }
 
     public void setAge(int age) {
         this.age = age;
+        if (age < 16){
+            throw new IllegalArgumentException("Invalid Age, try again ");
+        }
     }
 
     public void setClub(String club) {
         this.club = club;
     }
 
-    public void setGamesPlayed(int gamesPlayed) {
-        this.gamesPlayed = gamesPlayed;
+    public void setPlayedMatches(int gamesPlayed) {
+        this.playedMatches = gamesPlayed;
+        if (playedMatches == 0){
+            throw new IllegalArgumentException("Invalid played matches, try again ");
+        }
 
     }
 
     public void setGoalsScored(int goalsScored) {
         this.goalsScored = goalsScored;
+        if (goalsScored == 0){
+            throw new IllegalArgumentException("Invalid goals , try again ");
+        }
     }
-
 
 
     public Player(String name) {
@@ -55,8 +71,8 @@ public class Player {
     }
 
 
-    public int getGamesPlayed() {
-        return gamesPlayed;
+    public int getPlayedMatches() {
+        return playedMatches;
     }
 
     public int getGoalsScored() {
@@ -64,12 +80,11 @@ public class Player {
     }
 
 
-
     public Player(String name, int age, String club, int gamesPlayed, int goalsScored) {
         this.name = name;
         this.age = age;
         this.club = club;
-        this.gamesPlayed = gamesPlayed;
+        this.playedMatches = gamesPlayed;
         this.goalsScored = goalsScored;
     }
 }
