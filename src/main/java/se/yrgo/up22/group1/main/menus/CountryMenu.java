@@ -39,7 +39,7 @@ public class CountryMenu {
 //
         int countryChoice = getAndValidateMenuChoice(scanner);
         if (countryChoice == 0) {
-            Main.menuStart(scanner, mainMenu);
+            Main.startMenu(scanner, mainMenu);
         } else {
 
             oneCountryMenu(scanner, countryChoice);
@@ -49,6 +49,7 @@ public class CountryMenu {
 
     /**
      * A static method to generate a menu for the choosen country.
+     *
      * @param scanner
      * @param countryChoice index of the choosen country
      */
@@ -77,7 +78,7 @@ public class CountryMenu {
                     oneCountryMenu(scanner, countryChoice);
                     break;
                 case 0:
-                    Main.menuStart(scanner, mainMenu);
+                    Main.startMenu(scanner, mainMenu);
                     break;
             }
 
@@ -142,8 +143,9 @@ public class CountryMenu {
 
     /**
      * A static method to use the menu to remove a player from the choosen Country.
+     *
      * @param scanner
-     * @param activeCountry The Choosen Country
+     * @param activeCountry The active Country
      * @param countryChoice index used to get the choosen country
      */
     private static void removePlayerFromActiveCountry(Scanner scanner, Country activeCountry, int countryChoice) {
@@ -173,9 +175,10 @@ public class CountryMenu {
     }
 
     /**
+     * A static method to add a player to the active Country
      *
      * @param scanner
-     * @param activeCountry
+     * @param activeCountry The active Country
      */
     private static void addPlayerToActiveCountry(Scanner scanner, Country activeCountry) {
         System.out.println("############## Lägg till spelare för " + activeCountry.getName() + " ##############");
@@ -202,6 +205,9 @@ public class CountryMenu {
 
     }
 
+    /**
+     * A static method to show all countrys available in the data
+     */
     public static void showCountriesList() {
         System.out.println("(sorterade efter FIFA-ranking)");
         AtomicInteger counter = new AtomicInteger(1);

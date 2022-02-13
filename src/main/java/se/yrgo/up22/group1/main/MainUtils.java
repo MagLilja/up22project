@@ -5,11 +5,19 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.Scanner;
+
 /**
  * Utility class for the Main class for this small international football teams application.
+ *
  * @author Magnus Lilja
  */
 public class MainUtils {
+
+    /**
+     * Static method to read in a menu from a .txt file and print it to the console.
+     *
+     * @param menu
+     */
     public static void readInMenu(Path menu) {
         try {
             Files.readAllLines(menu).forEach(System.out::println);
@@ -22,6 +30,12 @@ public class MainUtils {
         }
     }
 
+    /**
+     * Static method to take in input from the console using a Scanner and validating that the input is numbers only.
+     *
+     * @param scanner
+     * @return
+     */
     public static int getAndValidateMenuChoice(Scanner scanner) {
         boolean breakOut = false;
         int resultInt = 0;

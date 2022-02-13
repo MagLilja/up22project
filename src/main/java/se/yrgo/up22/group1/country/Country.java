@@ -9,7 +9,6 @@ import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * A class representing an international football team.
@@ -25,25 +24,35 @@ public class Country implements Comparable<Country> {
     private List<Player> players;
     private Coach coach;
 
+    /**
+     * Class constructor specifying countrys name.
+     */
     public Country(String name) {
         this.name = name;
 
     }
 
-
+    /**
+     * Class constructor specifying countrys name, taking a list of players and specifying a coach.
+     */
     public Country(String name, List<Player> players, Coach coach) {
         this(name);
         addPlayer(players);
-        addCoach(coach);
+        addCoachToCountry(coach);
     }
 
-
+    /**
+     * Class constructor specifying countrys name, FIFA ranking and FIFA ranking points.
+     */
     public Country(String name, int FIFARanking, double FIFARankingPoints) {
         this(name);
         setFIFARanking(FIFARanking);
         setFIFARankingPoints(FIFARankingPoints);
     }
 
+    /**
+     * Class constructor specifying countrys name, FIFA ranking and FIFA ranking points, taking a list of players and specifying a coach.
+     */
     public Country(String name, int FIFARanking, double FIFARankingPoints,
                    List<Player> players, Coach coach) {
         this(name, players, coach);
@@ -52,7 +61,11 @@ public class Country implements Comparable<Country> {
 
     }
 
-
+    /**
+     * Registers a player to the countrys list of players. If the team does not have any players the method initializes an ArrayList.
+     *
+     * @param player One player
+     */
     public void addPlayer(Player player) {
         List<Player> tempPlayerList = new ArrayList<>();
         tempPlayerList.add(player);
@@ -64,7 +77,11 @@ public class Country implements Comparable<Country> {
         }
     }
 
-    // Overloading method for adding a list of players
+    /**
+     * Registers a list of players to the countrys list of players. If the team does not have any players the method sets the countrys list of players to the incoming list.
+     *
+     * @param players A list of players
+     */
     public boolean addPlayer(List<Player> players) {
         if (this.players == null) {
             if (CountryValidatorService.validateMaxPlayers(this, players)) {
@@ -75,14 +92,19 @@ public class Country implements Comparable<Country> {
         } else {
             if (CountryValidatorService.validateMaxPlayers(this, players)) {
                 this.players.addAll(players);
-            }else {
+            } else {
                 throw new IllegalStateException("Too many players in the team. Got: 0 " + getPlayers().size() + " Trying to add: " + players.size());
             }
         }
         return true;
     }
 
-    public void addCoach(Coach coach) {
+    /**
+     * Registers a coach to the country. If the team does already have a coach it throws an IllegalStateException.
+     *
+     * @param coach One player
+     */
+    public void addCoachToCountry(Coach coach) {
         if (this.coach == null) {
             this.coach = coach;
         } else {
@@ -90,7 +112,11 @@ public class Country implements Comparable<Country> {
         }
     }
 
-
+    /**
+     * Registers a FIFA ranking points to the country. If the team does already have an entry here it will be overwritten.
+     *
+     * @param FIFARankingPoints
+     */
     public void setFIFARankingPoints(double FIFARankingPoints) {
         if (CountryValidatorService.validateFIFARankingPoints(FIFARankingPoints)) {
             this.FIFARankingPoints = FIFARankingPoints;
@@ -99,7 +125,11 @@ public class Country implements Comparable<Country> {
         }
     }
 
-
+    /**
+     * Registers a FIFA ranking to the country. If the team does already have an entry here it will be overwritten.
+     *
+     * @param FIFARanking
+     */
     public void setFIFARanking(int FIFARanking) {
         if (CountryValidatorService.validateFIFARanking(FIFARanking)) {
             this.FIFARanking = FIFARanking;
@@ -128,13 +158,17 @@ public class Country implements Comparable<Country> {
         return coach;
     }
 
+    /**
+     * A method to clear the list of players in the country.
+     *
+     * @return If the list of players in the country is already empty it will return false, otherwise it will return true.
+     */
     public boolean removeAllPlayersFromTeam() {
-        if (players != null){
+        if (players != null) {
             players.clear();
             return true;
         }
         return false;
-
 
 
     }
