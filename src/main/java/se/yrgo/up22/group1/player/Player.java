@@ -1,5 +1,8 @@
 package se.yrgo.up22.group1.player;
 
+
+
+//Rayan Sabah Mahmod
 public class Player {
     private String name;
     private int age;
@@ -7,16 +10,33 @@ public class Player {
     private int gamesPlayed;
     private int goalsScored;
 
-    @Override
-    public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", club='" + club + '\'' +
-                ", gamesPlayed=" + gamesPlayed +
-                ", goalsScored=" + goalsScored +
-                '}';
+    public Player() {
+
     }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setClub(String club) {
+        this.club = club;
+    }
+
+    public void setGamesPlayed(int gamesPlayed) {
+        this.gamesPlayed = gamesPlayed;
+
+    }
+
+    public void setGoalsScored(int goalsScored) {
+        this.goalsScored = goalsScored;
+    }
+
+
 
     public Player(String name) {
         this.name = name;
@@ -42,6 +62,9 @@ public class Player {
     public int getGoalsScored() {
         return goalsScored;
     }
+
+
+
     public Player(String name, int age, String club, int gamesPlayed, int goalsScored) {
         this.name = name;
         this.age = age;
