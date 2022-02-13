@@ -1,8 +1,10 @@
 package se.yrgo.up22.group1.main;
 
 import se.yrgo.up22.group1.InitializedData;
+import se.yrgo.up22.group1.coach.Coach;
 import se.yrgo.up22.group1.main.menus.CountryMenu;
 import se.yrgo.up22.group1.match.Match;
+import se.yrgo.up22.group1.player.Player;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,8 +18,10 @@ public class Main {
 
     static Path mainMenu;
 
+
     public static void main(String[] args) {
         InitializedData.initializeData();
+
         Scanner scanner = new Scanner(System.in);
         mainMenu = Path.of("MainMenu.txt");
         if (Files.notExists(mainMenu)) {
@@ -39,14 +43,22 @@ public class Main {
                     CountryMenu.countryMenu(scanner);
                     break;
                 case 2:
+                    System.out.println("############## Alla spelare ##############");
+                    InitializedData.getListOfPlayers().stream()
+                            .sorted(Comparator.comparingInt(Player::getGamesPlayed))
+                            .forEach(System.out::println);
                     break;
-                //Match menu
+
                 case 3:
+                    System.out.println("############## Alla matcher ##############");
                     InitializedData.getListOfMatches().stream()
                             .sorted(Comparator.comparingInt(Match::getpublicNumber))
                             .forEach(System.out::println);
                     break;
                 case 4:
+                    System.out.println("############## Alla tränare ##############");
+                    InitializedData.getListOfCoaches().stream()
+                            .forEach(System.out::println);
                     break;
                 case 5:
                     System.out.println("Programmet avslutat!");

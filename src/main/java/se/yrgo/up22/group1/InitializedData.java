@@ -13,40 +13,55 @@ import java.util.List;
 public class InitializedData {
 
     // ######### Coach #########
+
     // Initialize 10 coaches
     // Initialize a List<> of coaches
+    private static List<Coach> listOfCoaches = new ArrayList<>();
 
+    public static List<Coach> getListOfCoaches() {
+        return listOfCoaches;
+    }
     // ######### Player #########
     // Initialize 10 players
     // Initialize a List<> of players
 
+    public static List<Player> getListOfPlayers() {
+        return listOfPlayers;
+    }
+
     // ######### Match #########
     // Initialize 10 matches
     // Initialize a List<> of matches
+    private static List<Match> listOfMatches = new ArrayList<>();
 
     // ######### Country #########
     // Initialize 10 countries
     // Initialize a List<> of countries
 
-    public static List<Player> listOfPlayers = List.of(new Player("Spelare"), new Player("En spelare till"));
-    public static List<Match> listOfMatches = new ArrayList<>();
-    public static Coach coach = new Coach("peter");
-    public static Country usa = new Country("USA", 1, 2109.09, listOfPlayers, coach);
-    public static Country sweden = new Country("Sweden", 2, 2079, listOfPlayers, coach);
-    public static Country germany = new Country("Germany", 3, 2070, listOfPlayers, coach);
-    public static Country france = new Country("France", 4, 2034, listOfPlayers, coach);
-    public static Country netherlands = new Country("Netherlands", 5, 2021, listOfPlayers, coach);
-    public static Country canada = new Country("Canada", 6, 2007, listOfPlayers, coach);
-    public static Country brazil = new Country("Brazil", 7, 1976, listOfPlayers, coach);
-    public static Country england = new Country("England", 8, 1974, listOfPlayers, coach);
-    public static Country spain = new Country("Spain", 9, 1959, listOfPlayers, coach);
-    public static Country koreaDPR = new Country("Korea DPR", 9, 1904, listOfPlayers, coach);
+    private static List<Player> listOfPlayers = new ArrayList<>(); // = List.of(new Player("Spelare"), new Player("En spelare till"));
 
-    public static List<Country> listOfCountries = new ArrayList<>();
+    private static Coach coach = new Coach("Peter Pan");
+    private static Country usa = new Country("USA", 1, 2109.09, listOfPlayers, coach);
+    private static Country sweden = new Country("Sweden", 2, 2079, listOfPlayers, coach);
+    private static Country germany = new Country("Germany", 3, 2070, listOfPlayers, coach);
+    private static Country france = new Country("France", 4, 2034, listOfPlayers, coach);
+    private static Country netherlands = new Country("Netherlands", 5, 2021, listOfPlayers, coach);
+    private static Country canada = new Country("Canada", 6, 2007, listOfPlayers, coach);
+    private static Country brazil = new Country("Brazil", 7, 1976, listOfPlayers, coach);
+    private static Country england = new Country("England", 8, 1974, listOfPlayers, coach);
+    private static Country spain = new Country("Spain", 9, 1959, listOfPlayers, coach);
+    private static Country koreaDPR = new Country("Korea DPR", 9, 1904, listOfPlayers, coach);
+
+    private static List<Country> listOfCountries = new ArrayList<>();
 
     public static void initializeData() {
+
         Collections.addAll(listOfCountries, sweden, usa, germany, france, netherlands, canada, brazil, england, spain,
                 koreaDPR);
+
+        Collections.addAll(listOfPlayers, new Player("Magnus"), new Player("Eyvind"));
+        Collections.addAll(listOfCoaches, new Coach("Rolf Ulfsson"), new Coach("Uffe Fritzzon"));
+
 
         Collections.addAll(listOfMatches,
                 new Match(canada, sweden, "Parc des Princes", ZonedDateTime.now(), 0, 1, 10000, Collections.emptyList(),

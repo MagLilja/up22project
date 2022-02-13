@@ -1,7 +1,10 @@
-Damfotboll!
+
+
+############## Internationell Damfotboll 2022 ##############
+
 Välj nedan:
 1. Landslag
 2. Spelare
 3. Matcher
-4. Coacher
+4. Tränare
 5. Avsluta programmet!

@@ -58,9 +58,9 @@ public class Country implements Comparable<Country> {
         tempPlayerList.add(player);
         if (this.players == null) {
             this.players = new ArrayList<>();
-            if (CountryValidatorService.validateMaxPlayers(this, tempPlayerList)) {
-                players.addAll(tempPlayerList);
-            }
+        }
+        if (CountryValidatorService.validateMaxPlayers(this, tempPlayerList)) {
+            players.addAll(tempPlayerList);
         }
     }
 

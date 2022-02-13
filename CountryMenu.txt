@@ -2,6 +2,5 @@
 Välj nedan:
 1. Visa alla spelare
 2. Visa alla matcher
-3. Visa Coach
-4. Lägg till lag
-5. Tillbaka till huvudmenyn
+3. Visa tränare för lag
+0. Tillbaka till huvudmenyn

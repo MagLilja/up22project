@@ -97,8 +97,8 @@ public class Match {
     @Override
     public String toString() {
         return "Match{" +
-                "nationalTeamA=" + nationalTeamA +
-                ", nationalTeamB=" + nationalTeamB +
+                "nationalTeamA=" + nationalTeamA.getName() +
+                ", nationalTeamB=" + nationalTeamB.getName() +
                 ", arena='" + arena + '\'' +
                 ", matchDateAndTime=" + matchDateAndTime +
                 ", nationalTeamAScore=" + nationalTeamAScore +
