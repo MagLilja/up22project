@@ -4,7 +4,10 @@ import se.yrgo.up22.group1.player.Player;
 
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * A service class for the Country class
+ * @author Magnus Lilja
+ */
 public class CountryValidatorService {
 
     // Bounds for points taken from FIFA official doc:
