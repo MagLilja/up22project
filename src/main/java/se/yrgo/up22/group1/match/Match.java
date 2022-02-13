@@ -24,11 +24,11 @@ public class Match {
     public Match(Country nationalTeamA, Country nationalTeamB, String arena, ZonedDateTime matchDateAndTime,
             int nationalTeamAScore, int nationalTeamBScore, int publicNumber, List<Player> nationalTeamAPlayers,
             List<Player> nationalTeamBPlayers) {
-        
+
         this.nationalTeamA = Objects.requireNonNull(nationalTeamA, "Invalid nationalTeamA");
         this.nationalTeamB = Objects.requireNonNull(nationalTeamB, "Invalid nationalTeamB");
         this.arena = Objects.requireNonNull(arena, "Invalid arena");
-       this.matchDateAndTime = Objects.requireNonNull(matchDateAndTime, "Invalid matchDateAndTime");
+        this.matchDateAndTime = Objects.requireNonNull(matchDateAndTime, "Invalid matchDateAndTime");
         if (nationalTeamAScore < 0) {
             throw new IllegalArgumentException("Invalid nationalTeamAScore");
         }
@@ -94,5 +94,15 @@ public class Match {
                 ", nationalTeamAPlayers=" + nationalTeamAPlayers +
                 ", nationalTeamBPlayers=" + nationalTeamBPlayers +
                 '}';
+    }
+
+    public Country winner() {
+        if (nationalTeamAScore > nationalTeamBScore) {
+            return nationalTeamA;
+        }
+        if (nationalTeamBScore > nationalTeamAScore) {
+            return nationalTeamB;
+        }
+        return null;
     }
 }
