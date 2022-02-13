@@ -32,14 +32,19 @@ Then right click on the GIT repository in the list and choose 'Import Projects..
 ## How to run the application
 Use the following options to run the application. 
 
-Run the following Maven Goal
+Option 1. Run the following Maven Goal to run the application with Maven:
 
-    Run tests: mvn test
-    
 
-The build system also expects find your python interpreter by using /usr/bin/env python,
-if this doesn't work you will get problems.
+    mvn exec:java
 
-To resolve this, modify the #! lines in the .dbuild/pretty/*.py files.
+Option 2. Run the following Maven Goal to build a JAR-file. 
 
-Hope this helps.
+    mvn exec:java
+
+Then execute the JAR-file in your terminal with the following command:
+
+    java -jar ./target/up22project-1.0-SNAPSHOT.jar
+
+(target directory format can be different depending on terminal shell)
+
+###Hope this helps!
