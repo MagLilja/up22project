@@ -77,9 +77,9 @@ class CountryTest {
         // given
         Country sweden = new Country("Sweden");
         // when
-        int expectedAmountOfPlayers = 1;
         sweden.addPlayer(fridolina);
         sweden.addPlayer(lina);
+        int expectedAmountOfPlayers = 2;
         int amountOfPlayers = sweden.getPlayers().size();
         // then
         assertEquals(expectedAmountOfPlayers, amountOfPlayers);
