@@ -5,7 +5,7 @@ import se.yrgo.up22.group1.country.Country;
 
 import java.time.ZonedDateTime;
 import java.util.List;
-
+import java.util.Objects;
 
 public class Match {
     private Country nationalTeamA;
@@ -22,40 +22,27 @@ public class Match {
     }
 
     public Match(Country nationalTeamA, Country nationalTeamB, String arena, ZonedDateTime matchDateAndTime,
-                 int nationalTeamAScore, int nationalTeamBScore, int publicNumber, List<Player> nationTeamAPlayers,
-                 List<Player> nationalTeamBPlayers) {
-        if (nationalTeamA == null) {
-            throw new RuntimeException("Invalid nationalTeamA");
-        }
-        this.nationalTeamA = nationalTeamA;
-        if (nationalTeamB == null) {
-            throw new RuntimeException("Invalid nationalTeamB");
-        }
-        this.nationalTeamB = nationalTeamB;
-        if (arena == null || arena.isBlank()) {
-            throw new RuntimeException("Invalid arena");
-        }
-        this.arena = arena;
-        if (matchDateAndTime == null) {
-            throw new RuntimeException("Invalid matchDateAndTime");
-        }
-        this.matchDateAndTime = matchDateAndTime;
+            int nationalTeamAScore, int nationalTeamBScore, int publicNumber, List<Player> nationalTeamAPlayers,
+            List<Player> nationalTeamBPlayers) {
+
+        this.nationalTeamA = Objects.requireNonNull(nationalTeamA, "Invalid nationalTeamA");
+        this.nationalTeamB = Objects.requireNonNull(nationalTeamB, "Invalid nationalTeamB");
+        this.arena = Objects.requireNonNull(arena, "Invalid arena");
+        this.matchDateAndTime = Objects.requireNonNull(matchDateAndTime, "Invalid matchDateAndTime");
         if (nationalTeamAScore < 0) {
-            throw new RuntimeException("Invalid matchDateAndTime");
+            throw new IllegalArgumentException("Invalid nationalTeamAScore");
         }
         this.nationalTeamAScore = nationalTeamAScore;
         if (nationalTeamBScore < 0) {
-            throw new RuntimeException("Invalid matchDateAndTime");
+            throw new IllegalArgumentException("Invalid nationalTeamBScore");
         }
         this.nationalTeamBScore = nationalTeamBScore;
-        
         if (publicNumber < 0) {
-            throw new RuntimeException("Invalid publicNumber");
+            throw new IllegalArgumentException("Invalid publicNumber");
         }
         this.publicNumber = publicNumber;
-
-        this.nationalTeamAPlayers = nationTeamAPlayers;
-        this.nationalTeamBPlayers = nationalTeamBPlayers;
+        this.nationalTeamAPlayers = Objects.requireNonNull(nationalTeamAPlayers, "Invalid nationalTeamAPlayers");
+        this.nationalTeamBPlayers = Objects.requireNonNull(nationalTeamBPlayers, "Invalid nationalTeamBPlayers");
     }
 
     public Country getNationalTeamA() {
@@ -107,5 +94,15 @@ public class Match {
                 ", nationalTeamAPlayers=" + nationalTeamAPlayers +
                 ", nationalTeamBPlayers=" + nationalTeamBPlayers +
                 '}';
+    }
+
+    public Country winner() {
+        if (nationalTeamAScore > nationalTeamBScore) {
+            return nationalTeamA;
+        }
+        if (nationalTeamBScore > nationalTeamAScore) {
+            return nationalTeamB;
+        }
+        return null;
     }
 }
