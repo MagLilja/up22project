@@ -24,14 +24,16 @@ import static se.yrgo.up22.group1.main.MainUtils.readInMenu;
  */
 public class CountryMenu {
     public static Path oneCountryMenu;
-    static Path mainMenu;
+    private static Path mainMenu;
 
     /**
      * A static method to generate a menu for Countries
      *
      * @param scanner
+     * @param mainMenuIn
      */
-    public static void countryMenu(Scanner scanner) {
+    public static void countryMenu(Scanner scanner, Path mainMenuIn) {
+        mainMenu = mainMenuIn;
         showCountriesList();
         System.out.println("Välj landslag [nummer] eller [0] för att gå tillbaka till huvudmenyn");
 //
@@ -47,7 +49,6 @@ public class CountryMenu {
 
     /**
      * A static method to generate a menu for the choosen country.
-     *
      * @param scanner
      * @param countryChoice index of the choosen country
      */

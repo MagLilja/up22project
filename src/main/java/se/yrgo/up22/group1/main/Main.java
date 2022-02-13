@@ -44,7 +44,7 @@ public class Main {
             int menuChoice = getAndValidateMenuChoice(scanner);
             switch (menuChoice) {
                 case 1:
-                    CountryMenu.countryMenu(scanner);
+                    CountryMenu.countryMenu(scanner, mainMenu);
                     break;
                 case 2:
                     System.out.println("############## Alla spelare ##############");
