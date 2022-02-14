@@ -20,16 +20,27 @@ public class Player {
     }
 
 
+    @Override
+    public String toString() {
+        return "Player |" +
+                "Name:" + name + "|" +
+                " Age:" + age + "|" +
+                " Club:" + club + "|" +
+                " Played Matches:" + playedMatches + "|" +
+                " Goals Scored:" + goalsScored +
+                '|';
+    }
+
     public void setName(String name) {
         this.name = name;
-        if (name == ""){
+        if (name == "") {
             throw new IllegalArgumentException("Invalid name, try again ");
         }
     }
 
     public void setAge(int age) {
         this.age = age;
-        if (age < 16){
+        if (age < 16) {
             throw new IllegalArgumentException("Invalid Age, try again ");
         }
     }
@@ -40,7 +51,7 @@ public class Player {
 
     public void setPlayedMatches(int gamesPlayed) {
         this.playedMatches = gamesPlayed;
-        if (playedMatches == 0){
+        if (playedMatches == 0) {
             throw new IllegalArgumentException("Invalid played matches, try again ");
         }
 
@@ -48,7 +59,7 @@ public class Player {
 
     public void setGoalsScored(int goalsScored) {
         this.goalsScored = goalsScored;
-        if (goalsScored == 0){
+        if (goalsScored == 0) {
             throw new IllegalArgumentException("Invalid goals , try again ");
         }
     }

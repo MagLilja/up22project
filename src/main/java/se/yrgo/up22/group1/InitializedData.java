@@ -29,6 +29,7 @@ public class InitializedData {
         return listOfPlayers;
     }
 
+
     // ######### Match #########
     // Initialize 10 matches
     // Initialize a List<> of matches
@@ -38,7 +39,10 @@ public class InitializedData {
     // Initialize 10 countries
     // Initialize a List<> of countries
 
-    private static List<Player> listOfPlayers = new ArrayList<>(); // = List.of(new Player("Spelare"), new Player("En spelare till"));
+    private static List<Player> listOfPlayers = new ArrayList<>();// = List.of(new Player("Spelare"), new Player("En spelare till"));
+    private static Player lina = new Player("Lina Hurtig", 26, "Juventus", 164, 49);
+    private static Player hanna = new Player("Hanna Glas", 28, " FC Bayern München ", 306, 78);
+    private static Player caroline = new Player("Caroline Seger", 26, " Juventus ", 211, 26);
 
     private static Coach coach = new Coach("Peter Pan");
     private static Country usa = new Country("USA", 1, 2109.09, listOfPlayers, coach);
@@ -59,7 +63,7 @@ public class InitializedData {
         Collections.addAll(listOfCountries, sweden, usa, germany, france, netherlands, canada, brazil, england, spain,
                 koreaDPR);
 
-        Collections.addAll(listOfPlayers, new Player("Magnus"), new Player("Eyvind"));
+        Collections.addAll(listOfPlayers, lina, caroline, hanna);
         Collections.addAll(listOfCoaches, new Coach("Rolf Ulfsson"), new Coach("Uffe Fritzzon"));
 
 

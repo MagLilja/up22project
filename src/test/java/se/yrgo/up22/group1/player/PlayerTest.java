@@ -1,7 +1,6 @@
 package se.yrgo.up22.group1.player;
 
 
-
 import org.junit.jupiter.api.*;
 
 
@@ -47,7 +46,7 @@ public class PlayerTest {
         testPlayerOne.getPlayedMatches();
         int playedMatchesResult = testPlayerOne.getPlayedMatches();
         assertEquals(expGamesPlayed, playedMatchesResult);
-        /// Goals Scored  GoalsScored
+        /// Goals Scored
         int expGoalsScored = 49;
         testPlayerOne.setGoalsScored(49);
         testPlayerOne.getGoalsScored();
@@ -55,8 +54,6 @@ public class PlayerTest {
         assertEquals(expGoalsScored, goalsScoredResult);
 
     }
-
-
 
 
     /// Player Two
@@ -91,7 +88,6 @@ public class PlayerTest {
         testPlayerTwo.getGoalsScored();
         int goalsScoreResult = testPlayerTwo.getGoalsScored();
         assertEquals(expGoalsScored, goalsScoreResult);
-
 
 
     }
