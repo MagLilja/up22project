@@ -25,6 +25,11 @@ public class InitializedData {
     // Initialize 10 players
     // Initialize a List<> of players
 
+    private static List<Player> listOfPlayers = new ArrayList<>();// = List.of(new Player("Spelare"), new Player("En spelare till"));
+    private static Player lina = new Player("Lina Hurtig", 26, "Juventus", 164, 49);
+    private static Player hanna = new Player("Hanna Glas", 28, " FC Bayern München ", 306, 78);
+    private static Player caroline = new Player("Caroline Seger", 26, " Juventus ", 211, 26);
+
     public static List<Player> getListOfPlayers() {
         return listOfPlayers;
     }
@@ -38,11 +43,6 @@ public class InitializedData {
     // ######### Country #########
     // Initialize 10 countries
     // Initialize a List<> of countries
-
-    private static List<Player> listOfPlayers = new ArrayList<>();// = List.of(new Player("Spelare"), new Player("En spelare till"));
-    private static Player lina = new Player("Lina Hurtig", 26, "Juventus", 164, 49);
-    private static Player hanna = new Player("Hanna Glas", 28, " FC Bayern München ", 306, 78);
-    private static Player caroline = new Player("Caroline Seger", 26, " Juventus ", 211, 26);
 
     private static Coach coach = new Coach("Peter Pan");
     private static Country usa = new Country("USA", 1, 2109.09, listOfPlayers, coach);

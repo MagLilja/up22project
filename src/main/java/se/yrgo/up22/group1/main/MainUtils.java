@@ -38,18 +38,22 @@ public class MainUtils {
      */
     public static int getAndValidateMenuChoice(Scanner scanner) {
         boolean breakOut = false;
-        int resultInt = 0;
+        int inputInt = 0;
         while (!breakOut) {
-            String resultString = scanner.nextLine();
-            if (resultString.matches("\\d+")) {
-                resultInt = Integer.parseInt(resultString);
+            String inputString = scanner.nextLine();
+            if (validateInput(inputString)) {
+                inputInt = Integer.parseInt(inputString);
                 breakOut = true;
             } else {
                 System.out.println("Ej giltigt input, försök igen!");
             }
         }
 
-        return resultInt;
+        return inputInt;
 
+    }
+
+    public static boolean validateInput(String resultString) {
+        return resultString.matches("\\d+");
     }
 }
