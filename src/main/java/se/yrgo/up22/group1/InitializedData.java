@@ -5,6 +5,16 @@ import se.yrgo.up22.group1.country.Country;
 import se.yrgo.up22.group1.match.Match;
 import se.yrgo.up22.group1.player.Player;
 
+
+import com.google.common.io.Resources;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+import org.apache.commons.io.IOUtils;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +39,6 @@ public class InitializedData {
         return listOfPlayers;
     }
 
-
     // ######### Match #########
     // Initialize 10 matches
     // Initialize a List<> of matches
@@ -39,10 +48,7 @@ public class InitializedData {
     // Initialize 10 countries
     // Initialize a List<> of countries
 
-    private static List<Player> listOfPlayers = new ArrayList<>();// = List.of(new Player("Spelare"), new Player("En spelare till"));
-    private static Player lina = new Player("Lina Hurtig", 26, "Juventus", 164, 49);
-    private static Player hanna = new Player("Hanna Glas", 28, " FC Bayern München ", 306, 78);
-    private static Player caroline = new Player("Caroline Seger", 26, " Juventus ", 211, 26);
+    private static List<Player> listOfPlayers = new ArrayList<>(); // = List.of(new Player("Spelare"), new Player("En spelare till"));
 
     private static Coach coach = new Coach("Peter Pan");
     private static Country usa = new Country("USA", 1, 2109.09, listOfPlayers, coach);
@@ -63,7 +69,7 @@ public class InitializedData {
         Collections.addAll(listOfCountries, sweden, usa, germany, france, netherlands, canada, brazil, england, spain,
                 koreaDPR);
 
-        Collections.addAll(listOfPlayers, lina, caroline, hanna);
+        Collections.addAll(listOfPlayers, new Player("Magnus"), new Player("Eyvind"));
         Collections.addAll(listOfCoaches, new Coach("Rolf Ulfsson"), new Coach("Uffe Fritzzon"));
 
 
@@ -93,11 +99,30 @@ public class InitializedData {
 
     }
 
+    public static List<Country> getListOfCountries() {
+        try {
+            InputStream inputStream = Resources.getResource("countries.json").openStream();
+            String json = null;
+
+            json = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
+
+            Type listType = new TypeToken<ArrayList<Country>>() {
+            }.getType();
+            return new Gson().fromJson(json, listType);
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+        return new ArrayList<>();
+    }
+
     public static List<Match> getListOfMatches() {
         return listOfMatches;
     }
 
-    public static List<Country> getListOfCountries() {
-        return listOfCountries;
-    }
+//    public static List<Country> getListOfCountries() {
+//        return listOfCountries;
+//    }
+
+
 }

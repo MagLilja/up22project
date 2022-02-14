@@ -3,6 +3,7 @@ package se.yrgo.up22.group1.country;
 import se.yrgo.up22.group1.player.Player;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -46,6 +47,7 @@ public class CountryValidatorService {
      */
     public static boolean validateMaxPlayers(Country country, List<Player> tempPlayerList) {
         int currentTeamSize;
+
         if (country.getPlayers() != null) {
             currentTeamSize = country.getPlayers().size();
         } else {
